@@ -6,6 +6,23 @@
 
 > 仓库代码与实验由 AI 辅助完成,使用范围与责任归属见 [AI_USAGE.md](AI_USAGE.md)。
 
+## Why Every N-gram?
+
+**一句话**:大模型把知识存在权重里;这个项目把其中一部分搬到外部、常驻 CPU 的 n-gram
+记忆表——权重不动、不训练、表不占显存,同一张表还有第二个出口:投机解码的草稿。
+
+LLMs store knowledge in their weights. This project moves part of that memory into an
+external, CPU-resident n-gram table — one table, two exits:
+
+- **quality exit**: fuse the table into the next-token distribution; no retraining
+- **speed exit**: use the same table as speculative drafts; weights stay frozen
+
+✓ no retraining　✓ no GPU memory for the table　✓ model frozen
+✓ works with any decoder that exposes next-token logits (reference adapter: transformers)
+
+收益是条件性的——这正是本项目的主要发现。先用两个便宜探针 `a_model` / `a_target`
+判断值不值得挂,再决定。The benefits are conditional: probe first, then decide.
+
 ---
 
 ## 方法:一张表,两个出口,先探针后决策
