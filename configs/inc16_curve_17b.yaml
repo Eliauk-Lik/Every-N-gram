@@ -1,0 +1,14 @@
+out: reports/inc16_curve_17b
+carriers:
+  - name: c1-project-docs
+    align: reports/inc16_align_17b_c1-project-docs.json
+    task: reports/inc15_c1_17b.json
+    speed: reports/inc16_speed_17b_c1.json
+  - name: c2-site-docs
+    align: reports/inc16_align_17b_c2-site-docs.json
+    task: reports/inc16_c2_17b.json
+    speed: reports/inc16_speed_17b_c2.json
+  - name: c3-code-docs
+    align: reports/inc16_align_17b_c3-code-docs.json
+    task: reports/inc16_c3_17b.json
+    speed: reports/inc16_speed_17b_c3.json

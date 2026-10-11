@@ -1,0 +1,23 @@
+model: data/models/Qwen3-0.6B
+dtype: float32
+out_dir: reports
+horizon: 16
+carriers:
+  - name: c1-project-docs
+    corpus: data/project-docs
+    budget: 200000
+    table_sample: 64
+    context_len: 128
+    tail_chars: 2000
+  - name: c2-site-docs
+    corpus: data/carrier2-docs
+    budget: 300000
+    table_sample: 64
+    context_len: 128
+    tail_chars: 2000
+  - name: c3-code-docs
+    corpus: data/carrier3-code-docs
+    budget: 300000
+    table_sample: 64
+    context_len: 128
+    tail_chars: 2000

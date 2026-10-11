@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "everyngram"
+version = "0.0.1"
+description = "External n-gram conditional memory for frozen LLMs: one table, two exits (distribution fusion and speculative drafting)"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = ["numpy>=1.26", "pyyaml>=6.0"]
+
+[project.optional-dependencies]
+hf = ["torch>=2.4", "transformers>=4.40"]
+bench = ["matplotlib>=3.7", "psutil>=5.9"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+eng = "everyngram.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["everyngram*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

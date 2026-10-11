@@ -1,0 +1,13 @@
+model: data/models/Qwen3-0.6B
+dtype: float32
+out_dir: reports
+name_prefix: inc19_align_perstep_06b
+horizon: 16
+per_step: true
+carriers:
+  - name: c1-project-docs
+    corpus: data/project-docs
+    budget: 200000
+    table_sample: 64
+    context_len: 128
+    tail_chars: 2000

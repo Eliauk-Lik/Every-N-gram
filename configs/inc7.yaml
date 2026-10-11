@@ -1,0 +1,24 @@
+model: data/models/Qwen3-0.6B
+dtype: float32
+out: reports/inc7
+corpora:
+  - name: site-packages
+    root: 'data/python-stdlib/site-packages'
+    exclude: ['test']
+  - name: stdlib
+    root: 'data/python-stdlib'
+    exclude: ['site-packages', 'test']
+memory_files: 40
+dev_files: 20
+test_files: 240
+dev_cases_per_file: 12
+test_cases_per_file: 4
+orders: [1, 2, 3]
+gates:
+  - {min_order: 1, min_share: 0.5, max_top_prob: 0.9}
+  - {min_order: 2, min_share: 0.5, max_top_prob: 1.0}
+  - {min_order: 1, min_share: 0.0, max_top_prob: 0.7}
+lambdas: [0.02, 0.05]
+min_coverage: 0.25
+em_tokens: 1
+bootstrap: 2000

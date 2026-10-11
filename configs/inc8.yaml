@@ -1,0 +1,32 @@
+model: data/models/Qwen3-0.6B
+dtype: float32
+out: reports/inc8
+corpora:
+  site-packages:
+    root: 'data/python-stdlib/site-packages'
+    exclude: ['test']
+  stdlib:
+    root: 'data/python-stdlib'
+    exclude: ['site-packages', 'test']
+pool_files: 80
+dev_files: 20
+test_files: 120
+dev_cases_per_file: 12
+test_cases_per_file: 4
+orders: [1, 2, 3]
+gates:
+  - {min_order: 1, min_share: 0.5, max_top_prob: 0.9}
+  - {min_order: 2, min_share: 0.5, max_top_prob: 1.0}
+  - {min_order: 1, min_share: 0.0, max_top_prob: 0.7}
+lambdas: [0.02, 0.05]
+min_coverage: 0.25
+em_tokens: 1
+bootstrap: 2000
+runs:
+  - {name: site-20, corpus: site-packages, seed: 0, memory_files: 20}
+  - {name: site-40, corpus: site-packages, seed: 0, memory_files: 40}
+  - {name: site-80, corpus: site-packages, seed: 0, memory_files: 80}
+  - {name: std-20, corpus: stdlib, seed: 0, memory_files: 20}
+  - {name: std-40, corpus: stdlib, seed: 0, memory_files: 40}
+  - {name: std-80, corpus: stdlib, seed: 0, memory_files: 80}
+  - {name: std-40-draw2, corpus: stdlib, seed: 0, memory_files: 40, memory_offset: 20}

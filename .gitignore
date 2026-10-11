@@ -1,0 +1,23 @@
+# 临时与中间产物
+tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 记忆表与语料(体积大,由构建脚本生成,不进版本库)
+*.ngmem
+data/
+
+# 评测报告与曲线(生成产物)
+reports/
+
+# 本地配置覆盖(机器相关路径,不进版本库)
+configs/*.local.yaml
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,28 @@
+model: data/models/Qwen3-0.6B
+dtype: float32
+out: reports/inc9
+corpora:
+  site-packages:
+    root: 'data/python-stdlib/site-packages'
+    exclude: ['test']
+  stdlib:
+    root: 'data/python-stdlib'
+    exclude: ['site-packages', 'test']
+pool_files: 40
+dev_files: 20
+test_files: 240
+dev_cases_per_file: 12
+test_cases_per_file: 2
+orders: [1, 2, 3]
+gates:
+  - {min_order: 1, min_share: 0.5, max_top_prob: 0.9}
+  - {min_order: 2, min_share: 0.5, max_top_prob: 1.0}
+  - {min_order: 1, min_share: 0.0, max_top_prob: 0.7}
+lambdas: [0.02, 0.05]
+min_coverage: 0.25
+budgets: [500, 2000, 8000]
+strategies: [freq, query, quality, speed, hybrid]
+bootstrap: 2000
+runs:
+  - {name: site-packages, corpus: site-packages}
+  - {name: stdlib, corpus: stdlib}

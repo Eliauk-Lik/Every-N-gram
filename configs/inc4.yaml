@@ -1,0 +1,12 @@
+model: data/models/Qwen3-0.6B
+corpus: 'data/python-stdlib'
+out: reports/inc4
+max_files: 40
+budgets: [1000, 5000, 20000, 101012]
+lambdas: [0.0, 0.2]
+gamma: 4
+k: 256
+n_contexts: 512
+n_cases: 16
+max_new_tokens: 32
+repeats: 3

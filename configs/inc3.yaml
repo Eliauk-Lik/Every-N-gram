@@ -1,0 +1,11 @@
+model: data/models/Qwen3-0.6B
+memory: reports/inc3.ngmem
+out: reports/inc3
+corpus: 'data/python-stdlib'
+max_files: 40
+lambdas: [0.0, 0.05, 0.1, 0.2, 0.4]
+modes: [arithmetic, geometric]
+gammas: [1, 2, 4, 8]
+gamma: 4
+max_new_tokens: 32
+repeats: 3

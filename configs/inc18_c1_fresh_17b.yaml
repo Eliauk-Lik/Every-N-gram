@@ -1,0 +1,28 @@
+model: data/models/Qwen3-1.7B
+dtype: float16
+out: reports/inc18_c1_fresh_17b
+corpus: data/project-docs
+memory:
+  budget: 200000
+  orders: [1, 2, 3]
+  continuation_len: 16
+table_sample: 48
+held_out_from: 32
+copy_scenarios: 16
+context_len: 128
+tail_chars: 2000
+gamma: 8
+max_new_tokens: 32
+repeats: 3
+probe_steps: [8, 16]
+min_agree: 0.5
+bootstrap: 2000
+free_prompts:
+  - "用三句话解释什么是 KV 缓存"
+  - "写一段关于离线优先设计原则的说明"
+  - "给初学者解释贪婪解码和采样解码的区别"
+  - "为什么缓存能加速自回归生成?用两段话回答"
+  - "解释为什么浮点数的加法不满足结合律"
+  - "介绍一下 n-gram 模型的基本思想"
+  - "写一句关于戒骄戒躁的话"
+  - "描述一下把大表放在机外存储的两个好处"

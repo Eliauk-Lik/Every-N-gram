@@ -1,0 +1,20 @@
+model: data/models/Qwen3-1.7B
+dtype: float16
+out: reports/inc16_c2_17b
+corpus: data/carrier2-docs
+memory:
+  budget: 300000
+  orders: [1, 2, 3]
+  continuation_len: 16
+table_sample: 64
+dev_scenarios: 32
+context_len: 128
+tail_chars: 2000
+horizon: 16
+lambdas: [0.1, 0.2, 0.3, 0.4, 0.5]
+bootstrap: 2000
+ood:
+  root: 'data/python-stdlib'
+  exclude: ['site-packages', 'test']
+  files: 8
+  max_tokens: 4000

@@ -1,0 +1,28 @@
+model: data/models/Qwen3-1.7B
+dtype: float16
+out: reports/inc16_speed_17b_c3
+corpus: data/carrier3-code-docs
+memory:
+  budget: 300000
+  orders: [1, 2, 3]
+  continuation_len: 16
+table_sample: 32
+held_out_from: 16
+copy_scenarios: 16
+context_len: 128
+tail_chars: 2000
+gamma: 8
+max_new_tokens: 32
+repeats: 3
+probe_steps: [8, 16]
+min_agree: 0.5
+bootstrap: 2000
+free_prompts:
+  - "给任意预训练模型外挂一份 n-gram 条件记忆。模型权重不动"
+  - "解释一下为什么投机解码不会改变模型的输出分布"
+  - "写一段关于本地优先软件设计的短文"
+  - "列举三个提高 Python 程序可读性的建议"
+  - "什么是全变差距离?用一个简单的例子说明"
+  - "描述一下在 8GB 显存上跑 0.6B 模型需要注意什么"
+  - "给一个刚学编程的人讲讲什么是哈希表"
+  - "写一句鼓励的话,提醒自己坚持做长期项目"

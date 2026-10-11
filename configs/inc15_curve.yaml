@@ -1,0 +1,14 @@
+out: reports/inc15
+carriers:
+  - name: c1-project-docs
+    align: reports/inc15_align_c1-project-docs.json
+    task: reports/inc13.json
+    speed: reports/inc11.json
+  - name: c2-site-docs
+    align: reports/inc15_align_c2-site-docs.json
+    task: reports/inc14_carrier2.json
+    speed: reports/inc14_carrier2_speed.json
+  - name: c3-code-docs
+    align: reports/inc15_align_c3-code-docs.json
+    task: reports/inc15_carrier3.json
+    speed: reports/inc15_carrier3_speed.json

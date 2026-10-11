@@ -1,0 +1,29 @@
+model: data/models/Qwen3-0.6B
+dtype: float32
+out_dir: reports/search_demo
+objective: task
+constraints: {ood_max_ratio: 1.10}
+screening: {min_a_model: null, min_a_target: null}
+target:
+  corpus: data/project-docs
+  dev_scenarios: 16
+  test_scenarios: 16
+  scenario_offset: 0
+  context_len: 128
+  tail_chars: 2000
+  horizon: 16
+candidates:
+  - {name: c1-project-docs, corpus: data/project-docs, budgets: [8000, 20000]}
+  - {name: c2-site-docs, corpus: data/carrier2-docs, budgets: [8000, 20000]}
+lambdas: [0.1, 0.2, 0.4]
+gamma: 8
+max_new_tokens: 32
+orders: [1, 2, 3]
+continuation_len: 16
+ood:
+  root: 'data/python-stdlib'
+  exclude: ['site-packages', 'test']
+  files: 4
+  max_tokens: 1500
+bootstrap: 200
+seed: 0
